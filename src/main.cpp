@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <FastLED.h>
 
-#define DATA_PIN    3
+#define DATA_PIN    4
 #define LED_TYPE    WS2812B
 #define COLOR_ORDER GRB
 

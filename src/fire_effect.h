@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <FastLED.h>
-#include <state.h>
 
 short fire_energy[16][16];
 
@@ -10,7 +9,7 @@ void fireInit() {
     memset(fire_energy, 0, sizeof(fire_energy));
 }
 
-void fireAnimation() {
+void fireAnimation(CRGB (&leds)[256], unsigned char (&translation)[16][16]) {
     for (int j = 15; j > 0; j--) {
         for (int i = 0; i < 16; i++)
             if (fire_energy[i][j-1] > 0) {

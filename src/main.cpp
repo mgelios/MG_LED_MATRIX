@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <FastLED.h>
 
+#include <state.h>
 #include <fire_effect.h>
 
 #define DATA_PIN    4
@@ -37,7 +38,7 @@ void randomBlinks() {
     }
 }
 
-uint32_t matrix_grad[4] = {0x000000, 0x002000, 0x008000, 0x00FF00};
+uint32_t matrix_grad[6] = {0x000000, 0x002000, 0x004000, 0x008000, 0x00AF00, 0x00FF00};
 
 char martix_points[16][16];
 
@@ -48,8 +49,8 @@ void matrixEffect() {
         }
 
     for (int i = 0; i < 16; i++) {
-        if (random(10) == 1) {
-            martix_points[i][15] = 3;
+        if (random(13) == 1) {
+            martix_points[i][15] = 5;
         } else {
             if (martix_points[i][14] > 0) {
                 martix_points[i][15] = martix_points[i][14] - 1;
@@ -69,11 +70,11 @@ void matrixEffect() {
 void loop() {
     int offset = 239;
     while (true) {
-        fireAnimation();
+        //fireAnimation(leds, translation);
         //hueAnimation(offset);
         //hueSmallAnimation(offset);
         //randomBlinks();
-        //matrixEffect();
+        matrixEffect();
         FastLED.show();
         delay(100);
         offset--;

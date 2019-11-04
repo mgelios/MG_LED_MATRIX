@@ -3,7 +3,7 @@
 
 short fire_energy[16][16];
 
-CRGB colors[8] = {CRGB::Black, CRGB::Maroon, CRGB::DarkRed, CRGB::Red, CRGB::DarkOrange, CRGB::Orange, CRGB::Gold, CRGB::Yellow};
+CRGB colors[8] = {0x000000, 0x3F0000, 0x7F0000, 0xFF0000, 0xFF3F00, 0xFF7F00, 0xFFBF00, 0xFFFF00};
 
 void fireInit() {
     memset(fire_energy, 0, sizeof(fire_energy));

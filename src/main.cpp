@@ -3,6 +3,8 @@
 
 #include <state.h>
 #include <fire_effect.h>
+#include <matrix_effect.h>
+#include <hue_effect.h>
 
 #define DATA_PIN    4
 #define LED_TYPE    WS2812B
@@ -11,25 +13,8 @@
 void setup() {
     delay(1000);
     FastLED.addLeds<LED_TYPE, DATA_PIN, COLOR_ORDER>(leds, 256).setCorrection(TypicalSMD5050);
-    FastLED.setBrightness(16);
+    FastLED.setBrightness(31);
     fireInit();
-}
-
-void hueAnimation(int offset) {
-    for (int i = 0; i < 16; i++)
-        for (int j = 0; j < 16; j++) {
-            leds[translation[i][j]].setHSV(i + offset, 255, 255);
-        }
-}
-
-void hueSmallAnimation(int offset) {
-    for (int i = 0; i < 256; i++) {
-        int color = offset + i;
-        if (color > 255) {
-            color = color - 256;
-        }
-        leds[i].setHSV(color, 255, 255);
-    }
 }
 
 void randomBlinks() {
@@ -38,43 +23,14 @@ void randomBlinks() {
     }
 }
 
-uint32_t matrix_grad[6] = {0x000000, 0x002000, 0x004000, 0x008000, 0x00AF00, 0x00FF00};
-
-char martix_points[16][16];
-
-void matrixEffect() {
-    for (int i = 0; i < 16; i++)
-        for (int j = 0; j < 15; j++) {
-            martix_points[i][j] = martix_points[i][j + 1];
-        }
-
-    for (int i = 0; i < 16; i++) {
-        if (random(13) == 1) {
-            martix_points[i][15] = 5;
-        } else {
-            if (martix_points[i][14] > 0) {
-                martix_points[i][15] = martix_points[i][14] - 1;
-            } else {
-                martix_points[i][15] = 0;
-            }
-        }
-    }
-
-    for (int i = 0; i < 16; i++) {
-        for (int j = 0; j < 16; j++) {
-            leds[translation[i][j]] = matrix_grad[martix_points[i][j]];
-        }
-    }
-}
-
 void loop() {
     int offset = 239;
     while (true) {
         //fireAnimation(leds, translation);
-        //hueAnimation(offset);
-        //hueSmallAnimation(offset);
+        //hueAnimation(offset, leds, translation);
+        hueSmallAnimation(offset, leds, translation);
         //randomBlinks();
-        matrixEffect();
+        //matrixEffect(leds, translation);
         FastLED.show();
         delay(100);
         offset--;

@@ -26,9 +26,9 @@ void randomBlinks() {
 void loop() {
     int offset = 239;
     while (true) {
-        //fireAnimation(leds, translation);
+        fireAnimation(leds, translation);
         //hueAnimation(offset, leds, translation);
-        hueSmallAnimation(offset, leds, translation);
+        //hueSmallAnimation(offset, leds, translation);
         //randomBlinks();
         //matrixEffect(leds, translation);
         FastLED.show();

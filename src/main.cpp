@@ -19,17 +19,22 @@ void setup() {
 
 void randomBlinks() {
     for (int i = 0; i < 256; i++) {
-        leds[i].setHSV(random(256), 255,255);
+        leds[i].fadeToBlackBy(64);
+    }
+    for (int i = 0; i < 256; i++) {
+        if (random(32) == 1) {
+            leds[i].setHSV(random(256), 255,255);
+        }
     }
 }
 
 void loop() {
     int offset = 239;
     while (true) {
-        fireAnimation(leds, translation);
+        //fireAnimation(leds, translation);
         //hueAnimation(offset, leds, translation);
         //hueSmallAnimation(offset, leds, translation);
-        //randomBlinks();
+        randomBlinks();
         //matrixEffect(leds, translation);
         FastLED.show();
         delay(100);

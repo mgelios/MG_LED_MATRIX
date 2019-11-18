@@ -5,6 +5,7 @@
 #include <fire_effect.h>
 #include <matrix_effect.h>
 #include <hue_effect.h>
+#include <balls_effect.h>
 
 #define DATA_PIN    4
 #define LED_TYPE    WS2812B
@@ -34,7 +35,8 @@ void loop() {
         //fireAnimation(leds, translation);
         //hueAnimation(offset, leds, translation);
         //hueSmallAnimation(offset, leds, translation);
-        randomBlinks();
+        //randomBlinks();
+        ballsAnimation(offset, leds, translation);
         //matrixEffect(leds, translation);
         FastLED.show();
         delay(100);

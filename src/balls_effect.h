@@ -1,11 +1,11 @@
 #include <Arduino.h>
 #include <FastLED.h>
 
-signed char vectorX[4] = {1,-1,-1,1};
-signed char vectorY[4] = {1,1,1,1};
+signed char vectorX[4] = {1,-1,1,1};
+signed char vectorY[4] = {1,1,-1,1};
 signed char positionX[4] = {3,11,0,0};
 signed char positionY[4] = {0,0,5,7};
-char ballColor[4] = {0, 64, 128, 255};
+char ballColor[4] = {48, 96, 144, 192};
 
 void ballsAnimation(int offset, CRGB (&leds)[256], unsigned char (&translation)[16][16]) {
     for (int i = 0; i < 256; i++) {

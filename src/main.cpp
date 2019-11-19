@@ -6,6 +6,7 @@
 #include <matrix_effect.h>
 #include <hue_effect.h>
 #include <balls_effect.h>
+#include <snow_effect.h>
 
 #define DATA_PIN    4
 #define LED_TYPE    WS2812B
@@ -16,6 +17,7 @@ void setup() {
     FastLED.addLeds<LED_TYPE, DATA_PIN, COLOR_ORDER>(leds, 256).setCorrection(TypicalSMD5050);
     FastLED.setBrightness(31);
     fireInit();
+    snowInit();
 }
 
 void randomBlinks() {
@@ -36,10 +38,11 @@ void loop() {
         //hueAnimation(offset, leds, translation);
         //hueSmallAnimation(offset, leds, translation);
         //randomBlinks();
-        ballsAnimation(offset, leds, translation);
+        //ballsAnimation(offset, leds, translation);
         //matrixEffect(leds, translation);
+        snowAnimation(offset, leds, translation);
         FastLED.show();
-        delay(100);
+        delay(300);
         offset--;
         if (offset < 0) offset = 239;
     }

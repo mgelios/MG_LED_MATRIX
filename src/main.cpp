@@ -7,6 +7,7 @@
 #include <hue_effect.h>
 #include <balls_effect.h>
 #include <snow_effect.h>
+#include <starfall_effect.h>
 
 #define DATA_PIN    4
 #define LED_TYPE    WS2812B
@@ -40,9 +41,10 @@ void loop() {
         //randomBlinks();
         //ballsAnimation(offset, leds, translation);
         //matrixEffect(leds, translation);
-        snowAnimation(offset, leds, translation);
+        //snowAnimation(offset, leds, translation);
+        starfallAnimation(offset, leds, translation);
         FastLED.show();
-        delay(300);
+        delay(100);
         offset--;
         if (offset < 0) offset = 239;
     }

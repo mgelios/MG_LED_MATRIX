@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <FastLED.h>
 
+#include <graphical_utils.h>
 #include <state.h>
 #include <fire_effect.h>
 #include <matrix_effect.h>

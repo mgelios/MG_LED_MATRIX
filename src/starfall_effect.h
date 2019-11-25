@@ -34,3 +34,20 @@ void starfallAnimation(int offset, CRGB (&leds)[256], unsigned char (&translatio
         }
     }
 }
+
+DecimalVector vectors[10] = {{0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}};
+DecimalPosition positions[10] = {{0,0,10},{0,0,10},{0,0,10},{0,0,10},{0,0,10},{0,0,10},{0,0,10},{0,0,10},{0,0,10},{0,0,10}};
+bool isStarActive[10] = {0,0,0,0,0,0,0,0,0,0};
+
+void updatedStarfallAnimation(int offset, CRGB (&leds)[256], unsigned char (&translation)[16][16]) {
+    for (int i = 0; i < 256; i++) {
+        leds[i].fadeToBlackBy(128);
+    }
+    for (int i = 0; i < 10; i++) {
+        if (isStarActive[i]) {
+
+        } else {
+            
+        }
+    }
+}

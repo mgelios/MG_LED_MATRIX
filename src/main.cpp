@@ -43,7 +43,8 @@ void loop() {
         //ballsAnimation(offset, leds, translation);
         //matrixEffect(leds, translation);
         //snowAnimation(offset, leds, translation);
-        starfallAnimation(offset, leds, translation);
+        //starfallAnimation(offset, leds, translation);
+        updatedStarfallAnimation(offset, leds, translation);
         FastLED.show();
         delay(100);
         offset--;

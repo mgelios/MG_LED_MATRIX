@@ -45,9 +45,24 @@ void updatedStarfallAnimation(int offset, CRGB (&leds)[256], unsigned char (&tra
     }
     for (int i = 0; i < 10; i++) {
         if (isStarActive[i]) {
-
+            DecimalPosition nextPosition = getNextDecimalPosition(positions[i], vectors[i]);
+            if (nextPosition.coordX / nextPosition.scale < 0 || nextPosition.coordY / nextPosition.scale < 0 ||
+                nextPosition.coordX /nextPosition.scale > 15 || nextPosition.coordY / nextPosition.scale > 15) {
+                isStarActive[i] = false;
+            } else {
+                positions[i] = nextPosition;
+                leds[translation[positions[i].coordX / positions[i].scale][positions[i].coordY / positions[i].scale]].setRGB(255, 255, 255);
+            }
         } else {
-            
+            if (random(10) == 6) {
+                positions[i].coordX = (random(2) + 7) * 10;
+                positions[i].coordY = (random(2) + 7) * 10;
+                positions[i].scale = 10;
+                vectors[i].xAxis = positions[i].coordX == 80 ? random(10) + 1 : -(random(10) + 1);
+                vectors[i].yAxis = positions[i].coordY == 80 ? random(10) + 1 : -(random(10) + 1);
+                leds[translation[positions[i].coordX / positions[i].scale][positions[i].coordY / positions[i].scale]].setRGB(255, 255, 255);
+                isStarActive[i] = true;
+            }
         }
     }
 }

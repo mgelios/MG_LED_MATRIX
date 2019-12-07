@@ -59,7 +59,16 @@ void updatedStarfallAnimation(int offset, CRGB (&leds)[256], unsigned char (&tra
                 positions[i].coordY = (random(2) + 7) * 10;
                 positions[i].scale = 10;
 
-                vectors[i] = getVectorByLengthAndAngle(1, random(360), 10);
+                if (positions[i].coordX == 80 && positions[i].coordY == 80) {
+                    vectors[i] = getVectorByLengthAndAngle(1, random(90), 10);
+                } else if (positions[i].coordX == 70 && positions[i].coordY == 80) {
+                    vectors[i] = getVectorByLengthAndAngle(1, random(90) + 90, 10);
+                } else if (positions[i].coordX == 70 && positions[i].coordY == 70) {
+                    vectors[i] = getVectorByLengthAndAngle(1, random(90) + 180, 10);
+                } else {
+                    vectors[i] = getVectorByLengthAndAngle(1, random(90) + 270, 10);
+                }
+
                 //vectors[i].xAxis = positions[i].coordX == 80 ? random(10) + 1 : -(random(10) + 1);
                 //vectors[i].yAxis = positions[i].coordY == 80 ? random(10) + 1 : -(random(10) + 1);
                 leds[translation[positions[i].coordX / positions[i].scale][positions[i].coordY / positions[i].scale]].setRGB(255, 255, 255);
